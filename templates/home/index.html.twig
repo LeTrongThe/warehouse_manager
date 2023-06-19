@@ -1,0 +1,183 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ATN Toy Company For Teenagers{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+<script>
+function myFunction() {
+  alert("You need to be logged in to be able to do this");
+}
+</script>
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/homepass/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="/homepass/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="/homepass/assets/css/templatemo-lugx-gaming.css">
+    <link rel="stylesheet" href="/homepass/assets/css/owl.css">
+    <link rel="stylesheet" href="/homepass/assets/css/animate.css">
+    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+
+    
+<!--
+
+TemplateMo 589 lugx gaming
+
+https://templatemo.com/tm-589-lugx-gaming
+
+-->
+  </head>
+<body>
+
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="index.html" class="logo"  >
+                        <img src="/homepass/assets/images/logo1.png" alt="" style="width: 158px; border-radius: 10px;">
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                      <li><a href="/" class="active">Home</a></li>
+                    
+                    {% if app.user  %}
+                      <li><a href="product">Difficult To Manage</a></li>
+                      {% else %}
+                      <li><a href="#" onclick="myFunction()">Difficult To Manage</a></li>
+                        {% endif %}
+                      
+                      {% if app.user %}
+                          <li ><a href="{{ path('app_logout') }}">{{ app.user.userIdentifier }}</a></li>
+                     {% else %} 
+                     <li><a href="/login">Sign In</a></li>
+
+                       {% endif %}
+                      </ul>   
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+  <div class="main-banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 align-self-center">
+          <div class="caption header-text">
+            <h6>Welcome to ATN</h6>
+            <h2>BEST TOY SITE EVER!</h2>
+            <p>ATN is a Vietnamese company which is selling toys to teenagers in many provinces all over Vietnam</p>
+            <div class="search-input">
+              <form id="search" action="#">
+                <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle" />
+                <button role="button">Search Now</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 offset-lg-2">
+          <div class="right-image">
+            <img src="/homepass/assets/images/toy.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{# {% for product in products %} #}
+  
+  <div class="section trending">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="section-heading">
+            <h6>Trending</h6>
+            <h2>Trending Toy</h2>
+          </div>
+        </div>
+        <div class="col-lg-6">
+        </div>
+
+        {% for product in products %}
+        <div class="col-lg-3 col-md-6">
+          <div class="item">
+
+            <div class="thumb">
+              <a href="product-details.html"><img src="/homepass/assets/images/trending-01.jpg" alt=""></a>
+              <span class="price">{{ product.price }}</span>
+            </div>
+            
+            <div class="down-content">
+              <span class="category">Action</span>
+              <h4>{{ product.name }}</h4>
+              <a href="product-details.html"><i class="fa fa-shopping-bag"></i></a>
+            </div>
+          </div>
+        </div>
+
+                 {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+                  {% endfor %}
+      </div>
+    </div>
+  </div>
+ 
+
+  <footer>
+    <div class="container">
+      <div class="col-lg-12">
+        <p>Copyright © 2048 LUGX Gaming Company. All rights reserved. &nbsp;&nbsp; <a rel="nofollow" href="https://templatemo.com" target="_blank">Design: TemplateMo</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="/homepass/vendor/jquery/jquery.min.js"></script>
+  <script src="/homepass/vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/homepass/assets/js/isotope.min.js"></script>
+  <script src="/homepass/assets/js/owl-carousel.js"></script>
+  <script src="/homepass/assets/js/counter.js"></script>
+  <script src="/homepass/assets/js/custom.js"></script>
+
+  </body>
+</html>
+{% endblock %}
