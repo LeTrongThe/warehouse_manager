@@ -71,11 +71,11 @@ https://templatemo.com/tm-589-lugx-gaming
                     <ul class="nav">
                       <li><a href="/" class="active">Home</a></li>
                     
-                    {% if app.user  %}
+                    {# {% if app.user  %} #}
                       <li><a href="product">Difficult To Manage</a></li>
-                      {% else %}
+                      {# {% else %}
                       <li><a href="#" onclick="myFunction()">Difficult To Manage</a></li>
-                        {% endif %}
+                        {% endif %} #}
                       
                       {% if app.user %}
                           <li ><a href="{{ path('app_logout') }}">{{ app.user.userIdentifier }}</a></li>
