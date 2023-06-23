@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+
 #[Route('/product')]
 class ProductController extends AbstractController
 {
@@ -29,6 +30,15 @@ class ProductController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $imageFile = $form->get('image')->getData();
+            if($imageFile){
+               $newFilename = uniqid() . '.' . $imageFile->guessExtension();
+               $imageFile->move(
+                   $this->getParameter('images_directory'),
+                   $newFilename
+               );
+               $product->setImage($newFilename);
+            }
             $productRepository->save($product, true);
 
             return $this->redirectToRoute('app_product_index', [], Response::HTTP_SEE_OTHER);
@@ -55,6 +65,15 @@ class ProductController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $imageFile = $form->get('image')->getData();
+            if($imageFile){
+               $newFilename = uniqid() . '.' . $imageFile->guessExtension();
+               $imageFile->move(
+                   $this->getParameter('images_directory'),
+                   $newFilename
+               );
+               $product->setImage($newFilename);
+            }
             $productRepository->save($product, true);
 
             return $this->redirectToRoute('app_product_index', [], Response::HTTP_SEE_OTHER);
